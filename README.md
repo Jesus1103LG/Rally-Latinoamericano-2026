@@ -69,6 +69,15 @@ Para interconectar parcelas separadas por kilómetros de distancia donde el Wi-F
 - Base de datos local SQLite operando en modo **WAL** (*Write-Ahead Logging*).
 - Los registros se marcan como sincronizados únicamente tras recibir la confirmación **PUBACK** de MQTT o el ACK de radio LoRa. Cero pérdida de datos ante desconexiones repentinas de la antena.
 
+### 🧠 Edge AI en el Cluster: Aprendizaje Continuo y Reducción del Margen de Error
+En el teléfono Master de cada cluster corre un **modelo local ligero de Edge AI para series temporales** (algoritmos adaptativos de bajo consumo tipo *Recursive Least Squares / Filtro de Kalman Extendido / Micro-ARIMA*) diseñado específicamente para CPUs ARM de smartphones reciclados:
+- **Entrenamiento Continuo en el Borde (*Online Learning*):** El modelo no es estático; se reentrena dinámicamente en tiempo real con cada lote de métricas físicas que ingresa a la base SQLite local de la parcela.
+- **Calibración del Microclima Hiperlocal:** Los pronósticos satelitales o globales tienen cuadrículas de 10x10 km y fallan en captar fenómenos locales (hondonadas frías, sombras de cerros o humedad de cañadas). El modelo local aprende la inercia térmica y las curvas barométricas específicas de ese lote en particular.
+- **Disminución Drástica del Error Cuadrático Medio (RMSE):** Al comparar cada predicción con la medición física real posterior, el modelo ajusta sus coeficientes sobre la marcha, reduciendo el margen de error a ventanas de 6 a 24 horas y permitiendo:
+  1. **Prevención de Heladas:** Anticipar descensos térmicos críticos cuando el viento cesa y la radiación infrarroja despeja el calor del suelo.
+  2. **Ventana Segura de Fumigación/Pulverización:** Predecir rachas de viento antes de que superen el límite agronómico de deriva (15 km/h).
+  3. **Alertas de Tormentas Severas:** Detección predictiva de frentes de tormenta al cruzar caídas bruscas de presión barométrica ($\Delta P / \Delta t > 2\text{ hPa/h}$) con aceleración de turbulencia acústica.
+
 ---
 
 ## 📁 Estructura del Repositorio
