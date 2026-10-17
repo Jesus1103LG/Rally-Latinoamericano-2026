@@ -1,0 +1,13 @@
+{
+  "central_station_id": "master_station_valle_central",
+  "cloud_broker_host": "mqtt.cloud.example.org",
+  "cloud_broker_port": 8883,
+  "use_tls": true,
+  "username": "station_master",
+  "password": "field_node_token",
+  "cloud_uplink_topic": "agrometeo/valle/telemetry",
+  "cloud_alerts_topic": "agrometeo/valle/alerts",
+  "batch_size": 100,
+  "uplink_interval_seconds": 120,
+  "max_backoff_seconds": 600
+}

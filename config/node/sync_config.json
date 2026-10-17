@@ -1,0 +1,12 @@
+{
+  "node_id": "station_node_01",
+  "central_broker_host": "192.168.43.1",
+  "central_broker_port": 1883,
+  "batch_topic_template": "station/{node_id}/batch",
+  "batch_size": 50,
+  "sync_interval_seconds": 60,
+  "connection_timeout_seconds": 10.0,
+  "publish_timeout_seconds": 15.0,
+  "max_backoff_seconds": 300,
+  "keepalive_seconds": 60
+}
